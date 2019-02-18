@@ -16,5 +16,21 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="create_new_account">Create New Account</string>
 
+    <!-- TODO: Profile placeholder text -->
+    <string name="rabby_jim">Rabby Jim</string>
+    <string name="dhaka_bangladesh">Dhaka, Bangladesh</string>
+    <string name="_8801952725406">+8801952725406</string>
+    <string name="phone">Phone</string>
+    <string name="facebook_com_rabby_jim">facebook.com/rabby.jim</string>
+    <string name="c_programming_java">C Programming, Java</string>
+    <string name="skill">Skill</string>
+    <string name="jim15_5551_diu_edu_bd">jim15-5551@diu.edu.bd</string>
+    <string name="_873">873</string>
+    <string name="_80">80%</string>
+    <string name="rating">Rating</string>
+    <string name="services">Services</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="facebook">Facebook</string>
+
 
 </resources>
