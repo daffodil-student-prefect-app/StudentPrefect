@@ -3,4 +3,29 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    //color for background
+
+    <color name="gradientStart">#3863b7</color>
+    <color name="gradientEnd">#798ebc</color>
+
+
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+
+    //color for button
+
+    <color name="buttonPressed">#0a4148</color>
+    <color name="transparent">#00000000</color>
+
+    //Fragment
+
+    <color name="fragment_background_color">#EAEAEA</color>
+
+    //primary color
+
+    <color name="red">#FF0000</color>
+
 </resources>
