@@ -31,4 +31,5 @@
     //profile element color
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="grey">#E5E5E5</color>
+    <color name="gray">#bfbfbf</color>
 </resources>

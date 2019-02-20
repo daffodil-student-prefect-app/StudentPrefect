@@ -15,6 +15,7 @@
     <string name="back_arrow">Back Arrow</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_new_account">Create New Account</string>
+    <string name="add_your_skills">Add Your Skills</string>
 
     <!-- TODO: Profile placeholder text -->
     <string name="rabby_jim">Rabby Jim</string>
@@ -23,7 +24,7 @@
     <string name="phone">Phone</string>
     <string name="facebook_com_rabby_jim">facebook.com/rabby.jim</string>
     <string name="c_programming_java">C Programming, Java</string>
-    <string name="skill">Skill</string>
+    <string name="Skill">Skill</string>
     <string name="jim15_5551_diu_edu_bd">jim15-5551@diu.edu.bd</string>
     <string name="_873">873</string>
     <string name="_80">80%</string>
@@ -31,6 +32,35 @@
     <string name="services">Services</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="facebook">Facebook</string>
+
+    <!-- TODO: Edit Profile text resources -->
+    <string name="save">Save</string>
+    <string name="user_name">user name</string>
+    <string name="full_name">Full Name</string>
+    <string name="private_information">PRIVATE INFORMATION</string>
+    <string name="phone_number">phone Number</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_out">Sign Out</string>
+
+
+    <!-- TODO: Skill Auto Complete TextView-->
+
+    <array name="skill">
+        <item>C</item>
+        <item>Java</item>
+        <item>Algorithom</item>
+        <item>Electronic Device</item>
+        <item>Digital Electronics</item>
+        <item>English</item>
+        <item>Math</item>
+        <item>Physics</item>
+        <item>Wirless Programmig</item>
+        <item>Image Processing</item>
+        <item>Bangladeshh Studies</item>
+
+    </array>
 
 
 </resources>
