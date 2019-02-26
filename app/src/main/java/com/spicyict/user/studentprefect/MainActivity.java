@@ -1,7 +1,6 @@
 package com.spicyict.user.studentprefect;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,9 +9,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,11 +20,15 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.spicyict.user.studentprefect.fragment.HomeFragment;
 import com.spicyict.user.studentprefect.fragment.MoreFragment;
 import com.spicyict.user.studentprefect.fragment.NotificationFragment;
 import com.spicyict.user.studentprefect.fragment.ProfileFragment;
 import com.spicyict.user.studentprefect.login.LoginActivity;
+
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Fragment selectedFragment = new HomeFragment();
     private ImageButton addNewPostButton;
+
+    String subject;
+    String status;
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -55,46 +61,42 @@ public class MainActivity extends AppCompatActivity {
         addNewPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_add_new_post, null);
-                final EditText addChooseSubjectEditText= mView.findViewById(R.id.add_new_post_addChooseSubjectEditText);
-                final TextView addLocationTextView=  mView.findViewById(R.id.add_new_post_addLocationTextView);
-                final ImageView sendImageView=  mView.findViewById(R.id.add_new_post_sendImageView);
-                final EditText postEditText=  mView.findViewById(R.id.add_new_post_postEditText);
-                final TextView profileNameTextView= mView.findViewById(R.id.add_new_profileNameTextView);
-                final CircleImageView profileImageView= mView.findViewById(R.id.add_new_post_profileImageView);
 
+                final ImageView addPostClose = mView.findViewById(R.id.add_new_post_close);
+                final CircleImageView profileImage= mView.findViewById(R.id.add_new_post_profileImageView);
+                final TextView profileName= mView.findViewById(R.id.add_new_profileNameTextView);
+                final ImageView postStatus=  mView.findViewById(R.id.add_new_post_sendImageView);
+                final EditText addPostET=  mView.findViewById(R.id.add_new_post_postEditText);
+                final TextView addLocation=  mView.findViewById(R.id.add_new_post_addLocationTextView);
+                final EditText addChooseSubject= mView.findViewById(R.id.add_new_post_addChooseSubjectEditText);
 
-             /*   mBuilder.setPositiveButton(AddNewPost, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                }); */
-
-                mBuilder.setNegativeButton( "Dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
-                sendImageView.setOnClickListener(new View.OnClickListener() {
+
+                //close the alertDialog
+                addPostClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //Post Status
+                postStatus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       /* if(!mEmail.getText().toString().isEmpty() && !mPassword.getText().toString().isEmpty()){
-                            Toast.makeText(MainActivity.this,
-                                    R.string.success_login_msg,
-                                    Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
+                        subject = addChooseSubject.getText().toString();
+                        status = addPostET.getText().toString().trim();
+                        if(TextUtils.isEmpty(status) || TextUtils.isEmpty(subject)){
+                            Toast.makeText(MainActivity.this, "write something", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(MainActivity.this,
-                                    R.string.error_login_msg,
-                                    Toast.LENGTH_SHORT).show();
-                        } */
-                        Toast.makeText(MainActivity.this, "Post Added", Toast.LENGTH_SHORT).show();
+                            uploadStatus();
+                            Toast.makeText(MainActivity.this, "Post Added Successfully", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -118,6 +120,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void uploadStatus() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+
+        String postid = reference.push().getKey();
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("postid", postid);
+        hashMap.put("status", status);
+        hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        reference.child(postid).setValue(hashMap);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener =
