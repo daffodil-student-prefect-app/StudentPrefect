@@ -12,7 +12,8 @@
 
 
     <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_grey">#e4e4e4</color>
 
 
     //color for button
@@ -37,4 +38,7 @@
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="grey">#E5E5E5</color>
     <color name="gray">#bfbfbf</color>
+
+    //notification color
+    <color name="notificationColor">#4FAF50</color>
 </resources>

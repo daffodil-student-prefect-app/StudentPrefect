@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">StudentPrefect</string>
 
+    <string name="facebook_app_id">402056407278223</string>
+    <string name="fb_login_protocol_scheme">fb402056407278223</string>
+
 
     <!-- TODO: Login Fragment String Resources -->
     <string name="logo_of_our_app">Logo Of Our APP</string>
@@ -46,6 +49,13 @@
     <string name="sign_out">Sign Out</string>
 
 
+    <string name="email_verification_popup_message">We send you a verification mail to your email address which you provide.
+        Please, check your email and verify your account.
+        After verification you can login your account.
+    </string>
+    <string name="message">Messages</string>
+
+
     <!-- TODO: Skill Auto Complete TextView-->
 
     <array name="skill">
@@ -60,7 +70,19 @@
         <item>Wirless Programmig</item>
         <item>Image Processing</item>
         <item>Bangladeshh Studies</item>
+    </array>
 
+    <array name="education">
+        <item>CSE</item>
+        <item>EEE</item>
+        <item>Texttile</item>
+        <item>BBA</item>
+        <item>English</item>
+        <item>Math</item>
+        <item>Physics</item>
+        <item>Wirless Programmig</item>
+        <item>Image Processing</item>
+        <item>Bangladeshh Studies</item>
     </array>
 
 
